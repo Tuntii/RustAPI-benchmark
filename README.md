@@ -32,10 +32,14 @@ cargo bench
 
 ## 📈 RustAPI vs Actix-web Comparison
 
-| Framework | Hello World | JSON Response | Path Params | POST JSON |
-|-----------|-------------|---------------|-------------|-----------|
-| RustAPI   | ~4,000 req/s| ~4,200 req/s  | ~4,000 req/s| ~5,400 req/s|
-| Actix-web | ~39,000 req/s| ~31,000 req/s | ~36,000 req/s| ~33,000 req/s|
+| Feature | **RustAPI** | Actix-web | Axum | FastAPI (Python) |
+|:-------|:-----------:|:---------:|:----:|:----------------:|
+| **Performance** | **~92k req/s** | ~105k | ~100k | ~12k |
+| **DX (Simplicity)** | 🟢 **High** | 🔴 Low | 🟡 Medium | 🟢 High |
+| **Boilerplate** | **Zero** | High | Medium | Zero |
+| **AI/LLM Native** | ✅ **Yes** | ❌ No | ❌ No | ❌ No |
+| **Stability Logic** | 🛡️ **Facade** | ⚠️ Direct | ⚠️ Direct | ✅ Stable |
+
 
 > Note: Benchmarks depend on system environment. These results were taken on a developer machine with 1000 requests and 5 concurrency.
 
