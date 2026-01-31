@@ -1,23 +1,23 @@
 # RustAPI Benchmarks
 
-Bu klasör, RustAPI framework'ünün performans testlerini içerir.
+This folder contains performance tests for the RustAPI framework.
 
-## 🎯 Benchmark Türleri
+## 🎯 Benchmark Types
 
 ### 1. Micro-benchmarks (Criterion.rs)
-Framework'ün iç bileşenlerini test eder:
-- **Routing**: URL eşleştirme hızı
-- **JSON Serialization**: Serialize/deserialize performansı
-- **Extractors**: Path, Query, Json extractor'ların hızı
+Tests the internal components of the framework:
+- **Routing**: URL matching speed
+- **JSON Serialization**: Serialize/deserialize performance
+- **Extractors**: Path, Query, Json extractor speeds
 
 ### 2. HTTP Load Testing
-Gerçek HTTP istekleriyle end-to-end performans:
-- **Hello World**: Basit text yanıt
-- **JSON Response**: JSON serialize edilmiş yanıt
-- **Path Parameters**: Dynamic route parametreleri
+End-to-end performance with real HTTP requests:
+- **Hello World**: Simple text response
+- **JSON Response**: JSON serialized response
+- **Path Parameters**: Dynamic route parameters
 - **JSON Parsing**: Request body parsing
 
-## 🚀 Benchmark Çalıştırma
+## 🚀 Running Benchmarks
 
 ### Micro-benchmarks
 ```bash
@@ -43,29 +43,29 @@ cargo bench
 
 > Note: Benchmarks depend on system environment. These results were taken on a developer machine with 1000 requests and 5 concurrency.
 
-## 🔥 Neden RustAPI?
+## 🔥 Why RustAPI?
 
-RustAPI, Actix-web ile karşılaştırıldığında:
+When compared to Actix-web, RustAPI offers:
 
-### ✅ Avantajlar
-1. **Developer Experience (DX)**: FastAPI benzeri ergonomi
-2. **Automatic OpenAPI**: Kod yazdıkça dökümantasyon otomatik oluşur
-3. **Built-in Validation**: `#[validate]` macro'ları ile otomatik 422 hatası
-4. **Simpler API**: Daha az boilerplate, daha okunabilir kod
-5. **Hyper 1.0**: Modern ve stabil HTTP stack
+### ✅ Advantages
+1. **Developer Experience (DX)**: FastAPI-like ergonomics
+2. **Automatic OpenAPI**: Documentation is automatically generated as you write code
+3. **Built-in Validation**: Automatic 422 errors with `#[validate]` macros
+4. **Simpler API**: Less boilerplate, more readable code
+5. **Hyper 1.0**: Modern and stable HTTP stack
 
-### 📊 Performans
-- RustAPI ham hızda Actix-web'e yakın performans sunar (%90-95)
-- Gerçek dünya uygulamalarında bu fark göz ardı edilebilir
-- DX kazanımları, küçük performans farkından daha değerli
+### 📊 Performance
+- RustAPI delivers near Actix-web performance in raw speed (90-95%)
+- This difference is negligible in real-world applications
+- DX gains are more valuable than the small performance difference
 
-### 🎯 Ne Zaman RustAPI Kullanmalı?
-- API-first projeler
-- OpenAPI/Swagger dökümantasyonu gereken projeler
-- Hızlı prototipleme
-- JSON-ağırlıklı REST API'lar
+### 🎯 When to Use RustAPI?
+- API-first projects
+- Projects requiring OpenAPI/Swagger documentation
+- Rapid prototyping
+- JSON-heavy REST APIs
 
-### 🎯 Ne Zaman Actix-web Kullanmalı?
-- Maksimum raw performans kritik
-- WebSocket ağırlıklı uygulamalar
-- Olgun ekosistem gereken büyük projeler
+### 🎯 When to Use Actix-web?
+- Maximum raw performance is critical
+- WebSocket-heavy applications
+- Large projects requiring a mature ecosystem

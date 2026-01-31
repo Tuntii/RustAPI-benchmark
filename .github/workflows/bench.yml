@@ -1,0 +1,36 @@
+name: Benchmarks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  benchmark:
+    name: Run Benchmarks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: dtolnay/rust-toolchain@stable
+      
+      - uses: Swatinem/rust-cache@v2
+      
+      - name: Run Criterion Benchmarks
+        run: |
+          cd rustapi_bench
+          cargo bench --no-fail-fast 2>&1 | tee bench_output.txt
+          
+      - name: Upload Benchmark Results
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: |
+            rustapi_bench/target/criterion
+            rustapi_bench/bench_output.txt
+          retention-days: 30

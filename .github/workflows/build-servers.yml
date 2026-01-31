@@ -1,0 +1,43 @@
+name: Build Servers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'actix_bench_server/**'
+      - 'bench_server/**'
+      - 'rustapi_bench/**'
+  pull_request:
+    branches: [main]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build-actix:
+    name: Build Actix Server
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: actix_bench_server
+      - name: Build
+        run: |
+          cd actix_bench_server
+          cargo build --release
+
+  build-rustapi:
+    name: Build RustAPI Bench
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: rustapi_bench
+      - name: Build
+        run: |
+          cd rustapi_bench
+          cargo build --release
